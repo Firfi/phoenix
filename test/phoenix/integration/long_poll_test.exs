@@ -11,6 +11,7 @@ defmodule Phoenix.Integration.LongPollTest do
   alias Phoenix.PubSub.Local
   alias __MODULE__.Endpoint
 
+  @moduletag :capture_log
   @port 5808
   @pool_size 1
 
@@ -23,7 +24,7 @@ defmodule Phoenix.Integration.LongPollTest do
   ])
 
   defmodule RoomChannel do
-    use Phoenix.Channel
+    use Phoenix.Channel, log: false
 
     intercept ["new_msg"]
 
